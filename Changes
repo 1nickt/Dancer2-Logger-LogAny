@@ -2,6 +2,8 @@ Changes file for Dancer2::Logger::LogAny
 
 {{$NEXT}}
 
+0.9907    2017-09-18 14:14:10-04:00 America/New_York
+
   - Add missing dependencies
 
 0.9906    2017-09-18 13:10:31-04:00 America/New_York
