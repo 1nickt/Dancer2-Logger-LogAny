@@ -1,5 +1,9 @@
 {{NEXT}}
 
+0.9901 2017-09-17 09:01:00 EDT
+
+  - Use Pod::Weaver
+
 0.9900 2017-09-17 09:00:00 EDT
 
-    - Initial release
+  - Initial release
