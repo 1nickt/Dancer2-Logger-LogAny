@@ -1,5 +1,6 @@
 package Dancer2::Logger::LogAny;
-our $VERSION = '0.9900';
+# ABSTRACT: Use Log::Any to control logging from your Dancer2 app
+our $VERSION = '0.9901';
 
 use strict; use warnings;
 use Dancer2 qw/ :syntax !log !debug !info !notice !warning !error /;
@@ -24,6 +25,12 @@ sub _build__logger_obj {
     return Log::Any->get_logger( %category ); 
 }
 
+=method log( @args )
+
+This is the function required by C<Dancer2::Core::Role::Logger>
+
+=cut
+
 sub log {
     my ( $self, $level, $message ) = @_;
 
@@ -33,10 +40,6 @@ sub log {
 }
 
 1; # return true
-
-=head1 NAME
-
-Dancer2::Logger::LogAny - Use Log::Any to control logging from your Dancer2 app
 
 =head1 DESCRIPTION
 
@@ -61,14 +64,9 @@ In your Dancer2 config:
 If you omit the category setting, C<Log::Any::Adapter> will use the name of
 this class as the category.
 
-=head1 METHODS
-
-=head2 log( @args )
-
-This is the function required by C<Dancer2::Core::Role::Logger>
-
 =head1 SEE ALSO
 
 C<Log::Any>, C<Log::Any::Adapter>, C<Dancer2::Core::Role::Logger>
 
 =cut
+
