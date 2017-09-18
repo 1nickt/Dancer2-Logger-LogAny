@@ -1,30 +1,39 @@
 package Dancer2::Logger::LogAny;
 
 
-use strict; use warnings; use Data::Dumper; ++$Data::Dumper::Sortkeys;
+use strict; use warnings;
 use Dancer2 qw/ :syntax !log !debug !info !notice !warning !error /;
-use Dancer2::Core::Types qw/ Str /;
-use Log::Any;
+use Dancer2::Core::Types qw/ Str ArrayRef /;
+use Log::Any::Adapter;
 use Moo;
 with 'Dancer2::Core::Role::Logger';
 
 has category    => ( is => 'ro', isa => Str );
+#has logger      => ( is => 'ro', isa => ArrayRef, required => 1 );
 has _logger_obj => ( is => 'lazy' );
 
 sub _build__logger_obj {
     my $self = shift;
 
+    my %category = $self->category ?
+        ( category => $self->category ) : ();
+#
+#    Log::Any::Adapter->set( \%category, @{ $self->logger } );
+#
     my $settings = config->{'engines'}->{'logger'}->{'LogAny'};
+#print Dumper "SETTINGS " . Dumper $settings;
+
+#    my %category = $settings->{'category'} ?
+#        ( category => $settings->{'category'} ) : ();
+
+#print Dumper "CAT " . Dumper \%category;
 
     if ( $settings->{'logger'} ) {
         require Log::Any::Adapter;
         Log::Any::Adapter->set( @{ $settings->{'logger'} } );
     }
 
-    my %category = exists $settings->{'category'} ?
-        ( category => $settings->{'category'} ) : ();
-
-    return Log::Any->get_logger( %category );
+    return Log::Any->get_logger( %category ); 
 }
 
 sub log {
