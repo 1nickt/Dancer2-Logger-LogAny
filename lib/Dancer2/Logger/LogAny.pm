@@ -1,6 +1,6 @@
 package Dancer2::Logger::LogAny;
-# ABSTRACT: Use Log::Any to control logging from your Dancer2 app
-our $VERSION = '0.9902';
+# ABSTRACT: Use Log::Any to log from your Dancer2 app
+our $VERSION = '0.9903';
 
 use strict; use warnings;
 use Dancer2 qw/ :syntax !log !debug !info !notice !warning !error /;
