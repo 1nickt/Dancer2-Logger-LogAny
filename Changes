@@ -2,6 +2,8 @@ Changes file for Dancer2::Logger::LogAny
 
 {{$NEXT}}
 
+0.9903    2017-09-18 09:41:29-04:00 America/New_York
+
   - Update Abstract
 
 0.9902    2017-09-18 09:37:53-04:00 America/New_York
