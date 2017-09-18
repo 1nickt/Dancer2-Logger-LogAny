@@ -2,6 +2,8 @@ Changes file for Dancer2::Logger::LogAny
 
 {{$NEXT}}
 
+  - Move Pod coverage test to xt/
+
 0.9904    2017-09-18 09:48:50-04:00 America/New_York
 
   - Manually update version number
