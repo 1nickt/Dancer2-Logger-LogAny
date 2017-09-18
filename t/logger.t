@@ -1,5 +1,4 @@
-use strict; use warnings; use Data::Dumper; ++$Data::Dumper::Sortkeys;
-use feature 'say';
+use strict; use warnings;
 use Test::More;
 
 use Dancer2 qw/ :syntax !log !pass /;
@@ -50,8 +49,8 @@ test_psgi $testapp, sub {
         my $url = '/' . $level;
         my $message = $level . '-msg';
         my $res  = $cb->( GET $url );
-        ok( $res->is_success,                              "request to $url was successful" );
-        is( $res->content, $message,                       'page content is as expected' );
+        ok( $res->is_success,                                   "request to $url was successful" );
+        is( $res->content, $message,                            '... page content is as expected' );
 
         my $messages = $log->msgs;
 
@@ -62,27 +61,13 @@ test_psgi $testapp, sub {
                 category => 'Testeroo',
                 level    => ( $level eq 'core' ? 'info' : $level ),
                 message  => "$message"
-            },                                              "log content is as expected with level $level",
+            },                                                  '... log content is as expected',
         );
 
         $log->clear;
     }
-
 };
 
 done_testing;
 
-__DATA__
----
-appname: TestApp
-charset: UTF-8
-
-engines:
-    logger:
-        LogAny:
-            category: 'Blorgle'
-            logger:
-                 - Stderr
-logger: LogAny
-log: core
-
+__END__

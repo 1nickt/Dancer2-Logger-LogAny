@@ -4,12 +4,14 @@ package Dancer2::Logger::LogAny;
 use strict; use warnings;
 use Dancer2 qw/ :syntax !log !debug !info !notice !warning !error /;
 use Dancer2::Core::Types qw/ Str ArrayRef /;
+
 use Log::Any::Adapter;
+
 use Moo;
 with 'Dancer2::Core::Role::Logger';
 
 has category    => ( is => 'ro', isa => Str );
-#has logger      => ( is => 'ro', isa => ArrayRef, required => 1 );
+has logger      => ( is => 'ro', isa => ArrayRef, required => 1 );
 has _logger_obj => ( is => 'lazy' );
 
 sub _build__logger_obj {
@@ -17,22 +19,8 @@ sub _build__logger_obj {
 
     my %category = $self->category ?
         ( category => $self->category ) : ();
-#
-#    Log::Any::Adapter->set( \%category, @{ $self->logger } );
-#
-    my $settings = config->{'engines'}->{'logger'}->{'LogAny'};
-#print Dumper "SETTINGS " . Dumper $settings;
 
-#    my %category = $settings->{'category'} ?
-#        ( category => $settings->{'category'} ) : ();
-
-#print Dumper "CAT " . Dumper \%category;
-
-    if ( $settings->{'logger'} ) {
-        require Log::Any::Adapter;
-        Log::Any::Adapter->set( @{ $settings->{'logger'} } );
-    }
-
+    Log::Any::Adapter->set( @{ $self->logger } );
     return Log::Any->get_logger( %category ); 
 }
 
@@ -64,30 +52,23 @@ In your Dancer2 config:
   engines:
       logger:
           LogAny:
+              category: Important Messages
               logger:
                   - Stderr
                   - newline
                   - 1
 
+If you omit the category setting, C<Log::Any::Adapter> will use the name of
+this class as the category.
+
 =head1 METHODS
 
-=head2 method_name( )
+=head2 log( @args )
 
-Method documentation here
+This is the function required by C<Dancer2::Core::Role::Logger>
 
 =head1 SEE ALSO
 
-C<Log::Any>
-
-=head1 AUTHOR
-
-Nick Tonkin <tonkin@cpan.org>
-
-=head1 COPYRIGHT AND LICENSE
-
-This software is copyright (c) 2017 by Nick Tonkin.
-
-This is free software; you can redistribute it and/or modify it under
-the same terms as the Perl 5 programming language system itself.
+C<Log::Any>, C<Log::Any::Adapter>, C<Dancer2::Core::Role::Logger>
 
 =cut
