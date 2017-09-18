@@ -2,6 +2,8 @@ Changes file for Dancer2::Logger::LogAny
 
 {{$NEXT}}
 
+0.9904    2017-09-18 09:48:50-04:00 America/New_York
+
   - Manually update version number
 
 0.9903    2017-09-18 09:41:29-04:00 America/New_York
