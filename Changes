@@ -2,6 +2,8 @@ Changes file for Dancer2::Logger::LogAny
 
 {{$NEXT}}
 
+0.9909    2017-11-11 18:51:51-05:00 America/New_York
+
   - Document the example/ directory
   - update dist.ini
   - use Pod::Weaver but not '=method'
