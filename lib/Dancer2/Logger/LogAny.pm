@@ -25,12 +25,6 @@ sub _build__logger_obj {
     return Log::Any->get_logger( %category ); 
 }
 
-=method log( @args )
-
-This is the function required by C<Dancer2::Core::Role::Logger>
-
-=cut
-
 sub log {
     my ( $self, $level, $message ) = @_;
 
@@ -63,6 +57,18 @@ In your Dancer2 config:
 
 If you omit the category setting, C<Log::Any::Adapter> will use the name of
 this class as the category.
+
+The above is a simple configuration example. For a complete working example
+app, logging to two different C<Log::Dispatch> output engines,  see the
+C<example/> directory in this module's distribution.
+
+=head1 FUNCTIONS
+
+=head2 log( @args )
+
+This is the function required by C<Dancer2::Core::Role::Logger>
+
+=cut
 
 =head1 SEE ALSO
 
