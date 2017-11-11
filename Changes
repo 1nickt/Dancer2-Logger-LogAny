@@ -2,6 +2,8 @@ Changes file for Dancer2::Logger::LogAny
 
 {{$NEXT}}
 
+0.9908    2017-11-11 18:37:46-05:00 America/New_York
+
   - Require Dancer2 min v0.157 (for to_app())
   - Drop obsolete import tag ':syntax'
   - Add an example application using the logger
