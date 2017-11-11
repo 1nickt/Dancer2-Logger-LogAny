@@ -3,7 +3,7 @@ package Dancer2::Logger::LogAny;
 our $VERSION = '0.9907';
 
 use strict; use warnings;
-use Dancer2 qw/ :syntax !log !debug !info !notice !warning !error /;
+#use Dancer2 qw/ !log !debug !info !notice !warning !error /;
 use Dancer2::Core::Types qw/ Str ArrayRef /;
 
 use Log::Any::Adapter;
