@@ -1,5 +1,5 @@
 package Dancer2::Logger::LogAny;
-# ABSTRACT: Use Log::Any to log from your Dancer2 app
+
 our $VERSION = '0.9910';
 
 use strict; use warnings;
@@ -34,6 +34,10 @@ sub log {
 }
 
 1; # return true
+
+=head1 NAME
+
+Dancer2::Logger::LogAny - Use Log::Any to log from your Dancer2 app
 
 =head1 DESCRIPTION
 

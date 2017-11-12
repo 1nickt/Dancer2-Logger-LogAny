@@ -1,7 +1,7 @@
-appname:    ExampleApp
-charset:    UTF-8
-log: core
-logger: LogAny
+appname: ExampleApp
+charset: UTF-8
+log:     core
+logger:  LogAny
 engines:
     logger:
         LogAny:
