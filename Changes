@@ -2,6 +2,8 @@ Changes file for Dancer2::Logger::LogAny
 
 {{$NEXT}}
 
+0.9910    2017-11-11 22:34:19-05:00 America/New_York
+
   - Add Perl minimum version to prereqs
   - Exclude dist.ini (and weaver.ini) from build
 
