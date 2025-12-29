@@ -1,6 +1,6 @@
 package Dancer2::Logger::LogAny;
 
-our $VERSION = '0.9913';
+our $VERSION = '2.00';
 
 use strict; use warnings;
 #use Dancer2 qw/ !log !debug !info !notice !warning !error /;
